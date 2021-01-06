@@ -16,7 +16,8 @@ public class FirstTest {
 	public void simpleRequest() {
 		
 		//Simple method which gets response code of a URI
-		RestAssured.baseURI = "http://192.168.99.100:3000";
+		//RestAssured.baseURI = "http://192.168.99.100:3000";
+		RestAssured.baseURI = "http://localhost:3000";
 		
 		RestAssured.given().get().then().assertThat().statusCode(200);
 		RestAssured.given().get("/posts").then().assertThat().statusCode(200).
@@ -41,7 +42,7 @@ public class FirstTest {
 		        "  \"author\": \"test author\"\n" +
 		        "}";
 		
-		RestAssured.baseURI = "http://192.168.99.100:3000";
+		RestAssured.baseURI = "http://localhost:3000";
 		
 		RestAssured.given().contentType(ContentType.JSON).
 		body(payload).post("/posts").then().statusCode(201);
